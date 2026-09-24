@@ -29,14 +29,20 @@ class MovieListing extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text('Placeholder for dropdown menu'),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('Select Showing'),
+                      ),
               ),
               const SizedBox(width: 12),
-              ElevatedButton(
+                    Expanded(
+                      child: ElevatedButton(
                 onPressed: () {},
-                child: const Text('Placeholder for add to basket button'),
+                        child: const Text('Add to Basket'),
+                      ),
+                    ),
+                  ],
               ),
             ],
           ),
