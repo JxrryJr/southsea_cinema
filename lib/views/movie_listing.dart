@@ -15,12 +15,16 @@ class MovieListing extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Center(
         child: Container(
-          padding: const EdgeInsets.all(16),
+            width: double.infinity,
+            constraints: const BoxConstraints(maxWidth: 600),
+            padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: cinemaSurface,
-            borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
