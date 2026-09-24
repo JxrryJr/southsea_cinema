@@ -102,6 +102,15 @@ class _MovieListingState extends State<MovieListing> {
                     ),
                   ],
                 ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Members enjoy priority booking and exclusive discounts.',
+                  style: TextStyle(
+                    color: cinemaBrandLight,
+                    fontSize: 13,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
               ],
             ),
           ),
