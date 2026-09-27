@@ -30,12 +30,16 @@ class ResponsiveScaffold extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 1200),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: isWide ? 32 : 16,
-                  vertical: isWide ? 32 : 16,
+              child: SizedBox(
+                width: double.infinity,
+                height: constraints.maxHeight,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isWide ? 32 : 16,
+                    vertical: isWide ? 32 : 16,
+                  ),
+                  child: body,
                 ),
-                child: body,
               ),
             ),
           );
