@@ -30,6 +30,15 @@ class _MovieListingState extends State<MovieListing> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Center(
+                  child: Image.asset(
+                    'images/onepieceposter.png',
+                    width: double.infinity,
+                    height: 320,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                const SizedBox(height: 24),
                 const Text(
                   'One Piece: Stampede (2020) (PG)',
                   style: TextStyle(
