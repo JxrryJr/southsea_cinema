@@ -11,6 +11,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int selectedTickets = 0;
+  bool addedToBasket = false;
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +99,14 @@ class _MovieListingState extends State<MovieListing> {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Add to Basket'),
+                        onPressed: () {
+                          setState(() {
+                            addedToBasket = true;
+                          });
+                        },
+                        child: Text(
+                          addedToBasket ? 'Added to Basket' : 'Add to Basket',
+                        ),
                       ),
                     ),
                   ],
