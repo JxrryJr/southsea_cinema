@@ -1,6 +1,6 @@
 class Movies {
   final String id;
-  final String Movie;
+  final String movie;
   final String description;
   final String rating;
   final double price;
@@ -8,11 +8,11 @@ class Movies {
 
   const Movies({
     required this.id,
-    required this.Movie,
+    required this.movie,
     required this.description,
     required this.rating,
     required this.price,
     required this.image,
   });
-  
+
 }
