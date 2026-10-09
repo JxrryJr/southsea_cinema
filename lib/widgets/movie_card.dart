@@ -47,7 +47,8 @@ class MovieCard extends StatelessWidget {
                           color: cinemaBrandDark,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Text(movie.ageRating, style: cinemaMetadataStyle),
+                        child:
+                            Text(movie.ageRating, style: cinemaMetadataStyle),
                       ),
                       const SizedBox(height: 12),
                       Text(
@@ -90,7 +91,7 @@ class MovieCard extends StatelessWidget {
                   },
                   child: const Text('Book now'),
                 ),
-              ),
+              ],
             ),
           ],
         ),
