@@ -69,7 +69,8 @@ class _MovieListingState extends State<MovieListing> {
                   decoration: BoxDecoration(
                     color: cinemaBackground,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: cinemaBrand.withValues(alpha: 0.4)),
+                    border:
+                        Border.all(color: cinemaBrand.withValues(alpha: 0.4)),
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<int>(
