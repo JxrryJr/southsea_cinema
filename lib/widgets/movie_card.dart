@@ -36,8 +36,8 @@ class MovieCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Rating: ${movie.rating}'),
-                Text('\$${movie.price.toStringAsFixed(2)}'),
+                Text(''),
+                ElevatedButton(),
               ],
             ),
           ),
