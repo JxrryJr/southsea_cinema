@@ -1,18 +1,26 @@
-class Movies {
+/// Immutable information needed to show and book one cinema screening.
+class Movie {
   final String id;
-  final String movie;
-  final String description;
-  final String rating;
-  final double price;
-  final String image;
+  final String title;
+  final String ageRating;
+  final String synopsis;
+  final String screen;
+  final String screeningDate;
+  final String screeningTime;
+  final double adultTicketPrice;
+  final double childTicketPrice;
+  final String imagePath;
 
-  const Movies({
+  const Movie({
     required this.id,
-    required this.movie,
-    required this.description,
-    required this.rating,
-    required this.price,
-    required this.image,
+    required this.title,
+    required this.ageRating,
+    required this.synopsis,
+    required this.screen,
+    required this.screeningDate,
+    required this.screeningTime,
+    required this.adultTicketPrice,
+    required this.childTicketPrice,
+    required this.imagePath,
   });
-
 }
