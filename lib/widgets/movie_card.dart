@@ -12,7 +12,17 @@ class MovieCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(movie.image),
+          Center(
+            child: SizedBox(
+              height: 250,
+              width: double.infinity,
+              child: Image.asset(
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+                movie.image,
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
