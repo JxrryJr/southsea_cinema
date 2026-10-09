@@ -6,7 +6,8 @@ import 'package:southsea_cinema/widgets/responsive_scaffold.dart';
 void main() {
   testWidgets('Basic app loading test', (WidgetTester tester) async {
     await tester.pumpWidget(const SouthseaCinemaApp());
-    expect(find.text('Welcome to Southsea Cinema'), findsOneWidget);
+    expect(find.text('Now showing'), findsOneWidget);
+    expect(find.text('One Piece: Stampede'), findsOneWidget);
   });
 
   testWidgets('uses wider page padding in a wide window',
