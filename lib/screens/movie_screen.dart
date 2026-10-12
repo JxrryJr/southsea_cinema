@@ -3,6 +3,7 @@ import 'package:southsea_cinema/models/movies.dart';
 import 'package:southsea_cinema/repositories/movie_repositories.dart';
 import 'package:southsea_cinema/widgets/movie_card.dart';
 import 'package:southsea_cinema/widgets/responsive_scaffold.dart';
+import 'package:southsea_cinema/constants.dart';
 
 class MovieScreen extends StatelessWidget {
   const MovieScreen({super.key});
@@ -19,6 +20,168 @@ class MovieScreen extends StatelessWidget {
         separatorBuilder: (context, index) => const SizedBox(height: 8),
         itemBuilder: (context, index) => MovieCard(movie: movies[index]),
       ),
+    );
+  }
+}
+class MovieListing extends StatefulWidget {
+  const MovieListing({super.key});
+
+  @override
+  State<MovieListing> createState() => _MovieListingState();
+}
+
+class _MovieListingState extends State<MovieListing> {
+  int selectedTickets = 0;
+  bool addedToBasket = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveScaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: double.infinity,
+            constraints: const BoxConstraints(maxWidth: 600),
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: cinemaSurface,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Image.asset(
+                    'images/onepieceposter.png',
+                    width: double.infinity,
+                    height: 320,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                const Text(
+                  'One Piece: Stampede (2020) (PG)',
+                  style: TextStyle(
+                    color: cinemaFontWhite,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                const _MovieDetailRow(label: 'Screen', value: 'Screen 3'),
+                const SizedBox(height: 12),
+                const _MovieDetailRow(label: 'Date', value: '27 Sep 2026'),
+                const SizedBox(height: 12),
+                const _MovieDetailRow(label: 'Runtime', value: '19:30 - 22:00'),
+                const SizedBox(height: 18),
+                const Text(
+                  'Adult: £12.00 | Child: £8.00',
+                  style: TextStyle(
+                    color: cinemaBrandLight,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: cinemaBackground,
+                    borderRadius: BorderRadius.circular(8),
+                    border:
+                        Border.all(color: cinemaBrand.withValues(alpha: 0.4)),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<int>(
+                      value: selectedTickets,
+                      isExpanded: true,
+                      dropdownColor: cinemaSurface,
+                      iconEnabledColor: cinemaBrand,
+                      style: const TextStyle(color: cinemaFontWhite),
+                      items: List.generate(6, (index) {
+                        return DropdownMenuItem<int>(
+                          value: index,
+                          child: Text(index.toString()),
+                        );
+                      }),
+                      onChanged: (value) {
+                        if (value != null) {
+                          setState(() {
+                            selectedTickets = value;
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            addedToBasket = true;
+                          });
+                        },
+                        child: Text(
+                          addedToBasket ? 'Added to Basket' : 'Add to Basket',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Members enjoy priority booking and exclusive discounts.',
+                  style: TextStyle(
+                    color: cinemaBrandLight,
+                    fontSize: 13,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class _MovieDetailRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _MovieDetailRow({
+    required this.label,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            color: cinemaFontMuted,
+            fontSize: 16,
+          ),
+        ),
+        Text(
+          value,
+          style: const TextStyle(
+            color: cinemaFontWhite,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
     );
   }
 }
