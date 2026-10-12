@@ -142,7 +142,7 @@ class _MovieListingState extends State<MovieListing> {
                             ),
                           );
                         },
-                        child: const Text('Order'),
+                        child: const Text('Book now'),
                       ),
                     ),
                   ],
