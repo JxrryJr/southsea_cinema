@@ -18,7 +18,7 @@ class SouthseaCinemaApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => MovieListing(movie: movie),
+        '/': (context) => MovieScreen(movie: movie),
         '/movie': (context) => MovieScreen(movie: movie),
         '/listing': (context) => MovieListing(movie: movie),
       },
