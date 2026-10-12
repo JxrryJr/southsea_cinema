@@ -9,9 +9,10 @@ class MovieScreen extends StatelessWidget {
   final Movie movie;
   final int maxTickets;
 
-  const MovieScreen({super.key,
-  required this.movie,
-  this.maxTickets = 6
+  const MovieScreen({
+    super.key,
+    required this.movie,
+    this.maxTickets = 6,
   });
 
   @override
@@ -29,6 +30,7 @@ class MovieScreen extends StatelessWidget {
     );
   }
 }
+
 class MovieListing extends StatefulWidget {
   final Movie movie;
 
@@ -131,13 +133,16 @@ class _MovieListingState extends State<MovieListing> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          setState(() {
-                            addedToBasket = true;
-                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return MovieScreen(movie: widget.movie);
+                              },
+                            ),
+                          );
                         },
-                        child: Text(
-                          addedToBasket ? 'Added to Basket' : 'Add to Basket',
-                        ),
+                        child: const Text('Order'),
                       ),
                     ),
                   ],
@@ -159,7 +164,6 @@ class _MovieListingState extends State<MovieListing> {
     );
   }
 }
-
 
 class _MovieDetailRow extends StatelessWidget {
   final String label;
