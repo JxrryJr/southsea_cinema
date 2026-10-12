@@ -74,8 +74,7 @@ class MovieCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Adult £${movie.adultTicketPrice.toStringAsFixed(2)}\n'
-                  'Child £${movie.childTicketPrice.toStringAsFixed(2)}',
+                  movie.formattedPrice,
                   style: cinemaMetadataStyle,
                 ),
                 ElevatedButton(
