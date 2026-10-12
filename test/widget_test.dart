@@ -7,6 +7,24 @@ import 'package:southsea_cinema/repositories/movie_repositories.dart';
 import 'package:southsea_cinema/widgets/responsive_scaffold.dart';
 
 void main() {
+  test('movie formats ticket prices', () {
+    final movie = MovieRepository().getMovies().first;
+
+    expect(movie.formattedPrice, 'Adult £12.00\nChild £8.00');
+  });
+
+  testWidgets('initial screen renders the movie listing', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(800, 1200));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(const SouthseaCinemaApp());
+
+    expect(find.text('Book One Piece: Stampede'), findsOneWidget);
+    expect(find.text('One Piece: Stampede (2020) (PG)'), findsOneWidget);
+    expect(find.text('Screen 3'), findsOneWidget);
+    expect(find.text('Book now'), findsOneWidget);
+  });
+
   testWidgets('movie listing works in isolation', (tester) async {
     await tester.binding.setSurfaceSize(const Size(800, 1200));
     addTearDown(() => tester.binding.setSurfaceSize(null));
