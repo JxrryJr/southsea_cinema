@@ -99,6 +99,31 @@ void main() {
     expect(find.text('One Piece: Stampede'), findsOneWidget);
   });
 
+  testWidgets('booking a selected movie opens MovieScreen', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(800, 1200));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    final movie = MovieRepository().getMovies().first;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: MovieListing(movie: movie),
+      ),
+    );
+
+    await tester.tap(find.byType(DropdownButton<int>));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('1').last);
+    await tester.pumpAndSettle();
+    expect(find.text('1'), findsOneWidget);
+
+    await tester.tap(find.text('Book now'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(MovieScreen), findsOneWidget);
+    expect(find.text('Now showing'), findsOneWidget);
+    expect(find.text('One Piece: Stampede'), findsOneWidget);
+  });
+
   testWidgets('responsive scaffold uses wider padding on wide screens',
       (tester) async {
     await tester.pumpWidget(
