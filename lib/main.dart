@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:southsea_cinema/views/movie_listing.dart';
 import 'package:southsea_cinema/screens/movie_screen.dart';
 
 void main() {
