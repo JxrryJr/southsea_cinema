@@ -65,7 +65,7 @@ class _MovieListingState extends State<MovieListing> {
               children: [
                 Center(
                   child: Image.asset(
-                    'images/onepieceposter.png',
+                    'assets/images/one_piece_stampede.jpg',
                     width: double.infinity,
                     height: 320,
                     fit: BoxFit.contain,
