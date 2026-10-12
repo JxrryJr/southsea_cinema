@@ -24,6 +24,11 @@ class Movie {
     required this.imagePath,
   });
 
-  String get formattedPrice => 'Adult £${adultTicketPrice.toStringAsFixed(2)}\n'
-      'Child £${childTicketPrice.toStringAsFixed(2)}';
+  String get formattedPrice => '£${adultTicketPrice.toStringAsFixed(2)}';
+
+  String get formattedChildPrice => '£${childTicketPrice.toStringAsFixed(2)}';
+
+  bool get isChildFriendly => ageRating == 'U' || ageRating == 'PG';
+
+  bool get isAdultOnly => ageRating == '18';
 }
