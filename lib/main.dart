@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:southsea_cinema/repositories/movie_repositories.dart';
 import 'package:southsea_cinema/screens/movie_screen.dart';
 
 void main() {
@@ -10,13 +11,16 @@ class SouthseaCinemaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final movie = MovieRepository().getMovies().first;
+
     return MaterialApp(
       title: "Southsea Cinema & Arts Centre",
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const MovieScreen(),
-        '/listing': (context) => const MovieListing(),
+        '/': (context) => MovieListing(movie: movie),
+        '/movie': (context) => MovieScreen(movie: movie),
+        '/listing': (context) => MovieListing(movie: movie),
       },
     );
   }

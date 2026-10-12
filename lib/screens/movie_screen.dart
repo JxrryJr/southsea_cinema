@@ -6,7 +6,13 @@ import 'package:southsea_cinema/widgets/responsive_scaffold.dart';
 import 'package:southsea_cinema/constants.dart';
 
 class MovieScreen extends StatelessWidget {
-  const MovieScreen({super.key});
+  final Movie movie;
+  final int maxTickets;
+
+  const MovieScreen({super.key,
+  required this.movie,
+  this.maxTickets = 6
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,9 @@ class MovieScreen extends StatelessWidget {
   }
 }
 class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+
+  const MovieListing({super.key, required this.movie});
 
   @override
   State<MovieListing> createState() => _MovieListingState();
@@ -37,6 +45,7 @@ class _MovieListingState extends State<MovieListing> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveScaffold(
+      title: 'Book ${widget.movie.title}',
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
