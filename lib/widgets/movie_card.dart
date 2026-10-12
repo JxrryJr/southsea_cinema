@@ -74,7 +74,8 @@ class MovieCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  movie.formattedPrice,
+                  'Adult ${movie.formattedPrice}\n'
+                  'Child ${movie.formattedChildPrice}',
                   style: cinemaMetadataStyle,
                 ),
                 ElevatedButton(

@@ -87,8 +87,9 @@ class _MovieListingState extends State<MovieListing> {
                 const SizedBox(height: 12),
                 const _MovieDetailRow(label: 'Runtime', value: '19:30 - 22:00'),
                 const SizedBox(height: 18),
-                const Text(
-                  'Adult: £12.00 | Child: £8.00',
+                Text(
+                  'Adult: ${widget.movie.formattedPrice} | '
+                  'Child: ${widget.movie.formattedChildPrice}',
                   style: TextStyle(
                     color: cinemaBrandLight,
                     fontSize: 16,

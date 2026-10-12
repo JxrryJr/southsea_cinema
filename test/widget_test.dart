@@ -10,7 +10,22 @@ void main() {
   test('movie formats ticket prices', () {
     final movie = MovieRepository().getMovies().first;
 
-    expect(movie.formattedPrice, 'Adult £12.00\nChild £8.00');
+    expect(movie.formattedPrice, '£12.00');
+    expect(movie.formattedChildPrice, '£8.00');
+    expect(movie.isChildFriendly, isTrue);
+    expect(movie.isAdultOnly, isFalse);
+  });
+
+  testWidgets('initial app screen renders after settling', (tester) async {
+    await tester.binding.setSurfaceSize(const Size(800, 1200));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(const SouthseaCinemaApp());
+    await tester.pumpAndSettle();
+
+    expect(find.text('Book One Piece: Stampede'), findsOneWidget);
+    expect(find.text('One Piece: Stampede (2020) (PG)'), findsOneWidget);
+    expect(find.text('Book now'), findsOneWidget);
   });
 
   testWidgets('initial screen renders the movie listing', (tester) async {
@@ -122,6 +137,39 @@ void main() {
     expect(find.byType(MovieScreen), findsOneWidget);
     expect(find.text('Now showing'), findsOneWidget);
     expect(find.text('One Piece: Stampede'), findsOneWidget);
+  });
+
+  testWidgets('MovieScreen renders the first movie at the minimum boundary',
+      (tester) async {
+    final movies = MovieRepository().getMovies();
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: MovieScreen(movie: movies.first),
+      ),
+    );
+
+    expect(find.text(movies.first.title), findsOneWidget);
+  });
+
+  testWidgets('MovieListing accepts the maximum ticket quantity',
+      (tester) async {
+    await tester.binding.setSurfaceSize(const Size(800, 1200));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    final movie = MovieRepository().getMovies().first;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: MovieListing(movie: movie),
+      ),
+    );
+
+    await tester.tap(find.byType(DropdownButton<int>));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('5').last);
+    await tester.pumpAndSettle();
+
+    expect(find.text('5'), findsOneWidget);
   });
 
   testWidgets('responsive scaffold uses wider padding on wide screens',
