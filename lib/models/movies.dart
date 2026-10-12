@@ -23,4 +23,7 @@ class Movie {
     required this.childTicketPrice,
     required this.imagePath,
   });
+
+  String get formattedPrice => 'Adult £${adultTicketPrice.toStringAsFixed(2)}\n'
+      'Child £${childTicketPrice.toStringAsFixed(2)}';
 }

@@ -85,15 +85,18 @@ void main() {
     expect(find.text('2'), findsOneWidget);
   });
 
-  testWidgets('book now opens the movie listing page', (tester) async {
+  testWidgets('tapping Book now navigates to MovieScreen with selected movie',
+      (tester) async {
     await tester.binding.setSurfaceSize(const Size(800, 1200));
     addTearDown(() => tester.binding.setSurfaceSize(null));
     await tester.pumpWidget(const SouthseaCinemaApp());
 
-    await tester.tap(find.text('Book now'));
+    await tester.tap(find.text('Book now').last);
     await tester.pumpAndSettle();
 
+    expect(find.byType(MovieScreen), findsOneWidget);
     expect(find.text('Now showing'), findsOneWidget);
+    expect(find.text('One Piece: Stampede'), findsOneWidget);
   });
 
   testWidgets('responsive scaffold uses wider padding on wide screens',
