@@ -41,8 +41,24 @@ class MovieListing extends StatefulWidget {
 }
 
 class _MovieListingState extends State<MovieListing> {
-  int selectedTickets = 0;
+  int _quantity = 0;
   bool addedToBasket = false;
+
+  void _increaseQuantity() {
+    if (_quantity < 6) {
+      setState(() {
+        _quantity++;
+      });
+    }
+  }
+
+  void _decreaseQuantity() {
+    if (_quantity > 0) {
+      setState(() {
+        _quantity--;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,36 +113,53 @@ class _MovieListingState extends State<MovieListing> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: cinemaBackground,
-                    borderRadius: BorderRadius.circular(8),
-                    border:
-                        Border.all(color: cinemaBrand.withValues(alpha: 0.4)),
-                  ),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<int>(
-                      value: selectedTickets,
-                      isExpanded: true,
-                      dropdownColor: cinemaSurface,
-                      iconEnabledColor: cinemaBrand,
-                      style: const TextStyle(color: cinemaFontWhite),
-                      items: List.generate(6, (index) {
-                        return DropdownMenuItem<int>(
-                          value: index,
-                          child: Text(index.toString()),
-                        );
-                      }),
-                      onChanged: (value) {
-                        if (value != null) {
-                          setState(() {
-                            selectedTickets = value;
-                          });
-                        }
-                      },
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: _decreaseQuantity,
+                      tooltip: 'Decrease quantity',
+                      icon: const Icon(Icons.remove),
                     ),
-                  ),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        decoration: BoxDecoration(
+                          color: cinemaBackground,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: cinemaBrand.withValues(alpha: 0.4),
+                          ),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<int>(
+                            value: _quantity,
+                            isExpanded: true,
+                            dropdownColor: cinemaSurface,
+                            iconEnabledColor: cinemaBrand,
+                            style: const TextStyle(color: cinemaFontWhite),
+                            items: List.generate(6, (index) {
+                              return DropdownMenuItem<int>(
+                                value: index,
+                                child: Text(index.toString()),
+                              );
+                            }),
+                            onChanged: (value) {
+                              if (value != null) {
+                                setState(() {
+                                  _quantity = value;
+                                });
+                              }
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: _increaseQuantity,
+                      tooltip: 'Increase quantity',
+                      icon: const Icon(Icons.add),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 24),
                 Row(
