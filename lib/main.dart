@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/repositories/movie_repositories.dart';
-import 'package:southsea_cinema/screens/movie_screen.dart';
+import 'package:southsea_cinema/views/movie_screen.dart';
 
 void main() {
   runApp(const SouthseaCinemaApp());
