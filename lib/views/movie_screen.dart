@@ -45,7 +45,7 @@ class _MovieListingState extends State<MovieListing> {
   bool addedToBasket = false;
 
   void _increaseQuantity() {
-    if (_quantity < 6) {
+    if (_quantity < 5) {
       setState(() {
         _quantity++;
       });
