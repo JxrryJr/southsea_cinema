@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/main.dart';
 import 'package:southsea_cinema/models/movies.dart';
-import 'package:southsea_cinema/screens/movie_screen.dart';
+import 'package:southsea_cinema/views/movie_screen.dart';
 import 'package:southsea_cinema/repositories/movie_repositories.dart';
 import 'package:southsea_cinema/widgets/responsive_scaffold.dart';
 
